@@ -26699,7 +26699,7 @@
 	var axios = __webpack_require__(235);
 
 	/* NYT API Key*/
-	var APIKey = "9d4a8986921972b65754ea0809d47c84:12:74623931";
+	var APIKey = "54bdaf740685408a8b16518f48bd5dcd";
 
 	// Helper Functions (in this case the only one is runQuery)
 	var helpers = {
@@ -26724,7 +26724,6 @@
 				}
 			}).then(function (results) {
 				console.log("Axios Results", results.data.response);
-
 				return results.data.response;
 			});
 		},
