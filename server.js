@@ -13,7 +13,7 @@ var Article = require('./server/model.js');
 // Create Instance of Express
 var app = express();
 var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this later in our listener
-
+console.log(process.env.PORT);
 
 
 // create a write stream (in append mode)
@@ -30,10 +30,15 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
 app.use(express.static('./public'));
 
-// -------------------------------------------------
+// -----------------------------------------------
 
 // MongoDB Configuration configuration
-mongoose.connect('mongodb://admin:reactrocks@ds023593.mlab.com:23593/heroku_pg676kmk');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://admin:reactrocks@ds023593.mlab.com:23593/heroku_pg676kmk');
+
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 var db = mongoose.connection;
 
 db.on('error', function(err) {
@@ -58,7 +63,6 @@ app.get('/api/saved', function(req, res) {
 
     Article.find({})
         .exec(function(err, doc) {
-
             if (err) {
                 console.log(err);
             } else {
