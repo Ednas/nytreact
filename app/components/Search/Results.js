@@ -74,11 +74,11 @@ var Results = React.createClass({
 								</span> 
 							</h3>
 							<p>Date Published: {article.pub_date}</p>
-
 							
 						  </li>
 
 						</div>
+
 				)
 
 			}.bind(this))
